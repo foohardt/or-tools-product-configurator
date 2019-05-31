@@ -7,6 +7,15 @@
 *.userosscache
 *.sln.docstates
 
+# Visual Studio files
+*.suo
+*.user
+[Bb]in
+[Oo]bj
+/.vs
+/packages
+/*.sln.ide
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -23,6 +32,11 @@ bin/
 Bin/
 obj/
 Obj/
+
+# node.js folders
+dist
+node_modules
+npm-debug.log*
 
 # Visual Studio 2015 cache/options directory
 .vs/
