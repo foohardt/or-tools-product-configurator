@@ -9,51 +9,51 @@ namespace CP_SAT_Product_Configurator.Controllers
     [ApiController]
     public class ModelsController : ControllerBase
     {
-        private readonly VehicleModelService _vehiclemodelService;
+        private readonly ModelService _modelService;
 
-        public ModelsController(VehicleModelService modelService)
+        public ModelsController(ModelService modelService)
         {
-            _vehiclemodelService = modelService;
+            _modelService = modelService;
         }
 
         [HttpGet]
-        public ActionResult<List<VehicleModel>> Get()
+        public ActionResult<List<Model>> Get()
         {
-            return _vehiclemodelService.Get();
+            return _modelService.Get();
         }
 
         [HttpGet("{id:length(24)}", Name = "GetModel")]
-        public ActionResult<VehicleModel> Get(string id)
+        public ActionResult<Model> Get(string id)
         {
-            var book = _vehiclemodelService.Get(id);
+            var model = _modelService.Get(id);
 
-            if (book == null)
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return book;
+            return model;
         }
 
         [HttpPost]
-        public ActionResult<VehicleModel> Create(VehicleModel model)
+        public ActionResult<Model> Create(Model model)
         {
-            _vehiclemodelService.Create(model);
+            _modelService.Create(model);
 
-            return CreatedAtRoute("GetBook", new { id = model.Id.ToString() }, model);
+            return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, VehicleModel  modelIn)
+        public IActionResult Update(string id, Model  modelIn)
         {
-            var book = _vehiclemodelService.Get(id);
+            var book = _modelService.Get(id);
 
             if (book == null)
             {
                 return NotFound();
             }
 
-            _vehiclemodelService.Update(id, modelIn);
+            _modelService.Update(id, modelIn);
 
             return NoContent();
         }
@@ -61,14 +61,14 @@ namespace CP_SAT_Product_Configurator.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var model = _vehiclemodelService.Get(id);
+            var model = _modelService.Get(id);
 
             if (model == null)
             {
                 return NotFound();
             }
 
-            _vehiclemodelService.Remove(model.Id);
+            _modelService.Remove(model.Id);
 
             return NoContent();
         }

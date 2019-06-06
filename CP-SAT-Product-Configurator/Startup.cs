@@ -21,7 +21,9 @@ namespace CP_SAT_Product_Configurator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<VehicleModelService>();
+            services.AddScoped<ModelService>();
+            services.AddScoped<ArticleService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory

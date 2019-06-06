@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace CP_SAT_Product_Configurator.Models
 {
-  public class VehicleModel
+  public class Model
   {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
