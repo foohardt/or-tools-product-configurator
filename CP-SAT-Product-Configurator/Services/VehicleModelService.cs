@@ -14,8 +14,8 @@ namespace CP_SAT_Product_Configurator.Services
         
         public VehicleModelService(IConfiguration config)
         {
-            var client = new MongoClient(config.GetConnectionString("dbname"));
-            var database = client.GetDatabase("dbname");
+            var client = new MongoClient(config.GetConnectionString("ConfiguratorDb"));
+            var database = client.GetDatabase("ConfiguratorDb");
             _vehiclemodels = database.GetCollection<VehicleModel>("VehicleModels");
         }
 
