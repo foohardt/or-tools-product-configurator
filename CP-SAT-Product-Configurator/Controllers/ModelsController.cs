@@ -43,12 +43,27 @@ namespace CP_SAT_Product_Configurator.Controllers
             return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
         }
 
+        [HttpPut]
+        public ActionResult<Model> Features(string id, Model modelIn)
+        {
+            var model = _modelService.Get(id);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            _modelService.Update(id, modelIn);
+
+            return NoContent();
+        }
+
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Model  modelIn)
         {
-            var book = _modelService.Get(id);
+            var model = _modelService.Get(id);
 
-            if (book == null)
+            if (model == null)
             {
                 return NotFound();
             }
