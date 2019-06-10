@@ -43,8 +43,8 @@ namespace CP_SAT_Product_Configurator.Controllers
             return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
         }
 
-        [HttpPut]
-        public ActionResult<Model> Features(string id, Model modelIn)
+        [HttpPut("{id:length(24)}")]
+        public IActionResult Update(string id, Model  modelIn)
         {
             var model = _modelService.Get(id);
 
@@ -58,8 +58,8 @@ namespace CP_SAT_Product_Configurator.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Model  modelIn)
+        [HttpPut]
+        public ActionResult<Model> Features(string id, Model modelIn)
         {
             var model = _modelService.Get(id);
 
