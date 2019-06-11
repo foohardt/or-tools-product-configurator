@@ -4,7 +4,7 @@ import { ProductModelRaw } from './product-model-raw';
 export class ProductModelFactory {
 
   static empty(): ProductModel {
-    return new ProductModel(0, '', '', null, null, null, null, null, null);
+    return new ProductModel(null, null, null, null, null, null, null, null, null);
   }
 
   static fromObject(rawProductModel: ProductModelRaw | any): ProductModel {

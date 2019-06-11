@@ -1,5 +1,5 @@
 export interface ProductModelRaw {
-  id: number;
+  id: string;
   code: string;
   modelName: string;
   modelType: string;

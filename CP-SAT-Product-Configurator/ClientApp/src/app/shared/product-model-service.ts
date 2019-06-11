@@ -56,9 +56,9 @@ export class ProductModelService {
       );
   }
 
-  check(isbn: string): Observable<boolean> {
+  check(id: string): Observable<boolean> {
     return this.http
-      .get(`${this.api}/${this.apiApp}/${isbn}/check`)
+      .get(`${this.api}/${this.apiApp}/${id}/check`)
       .pipe(
         catchError(this.errorHandler)
       );
