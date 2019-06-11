@@ -77,7 +77,7 @@ namespace CP_SAT_Product_Configurator
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 } 
             });  
         }
