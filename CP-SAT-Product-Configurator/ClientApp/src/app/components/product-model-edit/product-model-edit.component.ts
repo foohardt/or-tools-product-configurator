@@ -25,11 +25,12 @@ export class ProductModelEditComponent {
     private pmService: ProductModelService,
     private dialog: MatDialog
   ) {
-    const id: number = +this.route.snapshot.paramMap.get('id');
 
-    if ( id > 0 ) {
+    const id: string = this.route.snapshot.paramMap.get('id');
+
+    if ( id ) {
     this.isUpdating = true;
-    this.pmService.getSingle('' + id).subscribe(data => {
+    this.pmService.getSingle(id).subscribe(data => {
     console.log(data.id);
 
     this.productModelForm = this.fb.group({
