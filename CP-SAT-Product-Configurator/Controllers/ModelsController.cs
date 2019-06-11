@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CP_SAT_Product_Configurator.Models;
 using CP_SAT_Product_Configurator.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,15 +39,31 @@ namespace CP_SAT_Product_Configurator.Controllers
         public ActionResult<Model> Create(Model model)
         {
             _modelService.Create(model);
-            return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
+
+            return CreatedAtRoute("GetModel", new { id = model._Id.ToString() }, model);
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Model  modelIn)
+        public IActionResult Update(string _id, Model  modelIn)
         {
-            var book = _modelService.Get(id);
+            var model = _modelService.Get(_id);
 
-            if (book == null)
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            _modelService.Update(_id, modelIn);
+
+            return NoContent();
+        }
+
+        [HttpPut]
+        public ActionResult<Model> Features(string id, Model modelIn)
+        {
+            var model = _modelService.Get(id);
+
+            if (model == null)
             {
                 return NotFound();
             }
@@ -68,7 +83,7 @@ namespace CP_SAT_Product_Configurator.Controllers
                 return NotFound();
             }
 
-            _modelService.Remove(model.Id);
+            _modelService.Remove(model._Id);
 
             return NoContent();
         }

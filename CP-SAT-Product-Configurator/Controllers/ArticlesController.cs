@@ -40,11 +40,26 @@ namespace CP_SAT_Product_Configurator.Controllers
         {
             _articleService.Create(article);
 
-            return CreatedAtRoute("GetBook", new { id = article.Id.ToString() }, article);
+            return CreatedAtRoute("GetArticle", new { id = article.Id.ToString() }, article);
         }
 
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Article articleIn)
+        {
+            var article = _articleService.Get(id);
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            _articleService.Update(id, articleIn);
+
+            return NoContent();
+        }
+
+                [HttpPut]
+        public ActionResult<Article> Constraints(string id, Article articleIn)
         {
             var article = _articleService.Get(id);
 
