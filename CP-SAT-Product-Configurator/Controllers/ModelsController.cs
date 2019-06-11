@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CP_SAT_Product_Configurator.Models;
 using CP_SAT_Product_Configurator.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +40,6 @@ namespace CP_SAT_Product_Configurator.Controllers
         public ActionResult<Model> Create(Model model)
         {
             _modelService.Create(model);
-
             return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
         }
 
