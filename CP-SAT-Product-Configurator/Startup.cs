@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using CP_SAT_Product_Configurator.Services;
 
 namespace CP_SAT_Product_Configurator
@@ -21,18 +22,11 @@ namespace CP_SAT_Product_Configurator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
-
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-                // builder .AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-
-            }));
-
-            //services.AddCors();
-
+                builder.WithOrigins("http://localhost:4200").
+                    AllowAnyMethod().AllowAnyHeader().AllowAnyMethod(); ;
+            })); 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -42,12 +36,8 @@ namespace CP_SAT_Product_Configurator
                 configuration.RootPath = "ClientApp/dist";
             });
 
-
-
             services.AddScoped<ModelService>();
             services.AddScoped<ArticleService>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,14 +58,8 @@ namespace CP_SAT_Product_Configurator
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-
-             app.UseCors("ApiCorsPolicy");
-  /*          app.UseCors(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-    .AllowCredentials());
-*/
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").
+                AllowAnyHeader().AllowAnyMethod());
 
             app.UseMvc(routes =>
             {
@@ -84,7 +68,7 @@ namespace CP_SAT_Product_Configurator
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-    /*        app.UseSpa(spa =>
+            app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
@@ -93,12 +77,9 @@ namespace CP_SAT_Product_Configurator
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
-    */   
+                    spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
+                } 
+            });  
+        }
     }
-        
-    }
-    
 }

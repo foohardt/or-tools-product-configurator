@@ -10,15 +10,15 @@ namespace CP_SAT_Product_Configurator.Models
         public string Id { get; set; }
 
         [BsonElement("Name")]
-        public string ArticleName { get; set; }
+        public string articleName { get; set; }
 
         [BsonElement("Category")]
-        public string Category { get; set; }
+        public string category { get; set; }
 
         [BsonElement("Price")]
-        public decimal Price { get; set;}
+        public decimal price { get; set;}
 
         [BsonElement("Constraints")]
-        public BsonArray Constraints { get; set; }
+        public BsonArray constraints { get; set; }
     }
 }

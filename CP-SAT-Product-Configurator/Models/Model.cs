@@ -7,10 +7,7 @@ namespace CP_SAT_Product_Configurator.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string _Id { get; set; }
-
-        [BsonElement("id")]
-        public int id { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("code")]
         public string code { get; set; }

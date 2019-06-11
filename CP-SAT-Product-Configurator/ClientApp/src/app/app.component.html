@@ -1,6 +1,30 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <div>Product Model Records</div>
+  <span class="nav-tool-items">
+    <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+  </span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="/product-model-add">
+        <mat-icon>add</mat-icon>Add Product Model
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/product-model-list">
+        <mat-icon>format_list_bulleted</mat-icon>Product Models I
+      </a>
+
+      <a mat-list-item routerLinkActive="active" routerLink="/product-model-list2">
+        <mat-icon>format_list_bulleted</mat-icon>Product Models II
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- Main content -->
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
-  </div>
-</body>
+  </mat-sidenav-content>
+</mat-sidenav-container>

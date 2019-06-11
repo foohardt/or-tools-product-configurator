@@ -1,0 +1,94 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1"> {{isUpdating && 'Edit' || 'Add' }} Product Model</h1>
+  <mat-divider ></mat-divider>
+</div>
+
+
+
+<!-- Form -->
+<div class="inner-wrapper">
+    <form [formGroup]="productModelForm" (ngSubmit)="onFormSubmit()" novalidate>
+
+
+    <!-- Left block -->
+
+        <div class="controlers-wrapper">
+            <mat-form-field hintLabel="The Identifier will be auto generated">
+                <span matPrefix># &nbsp;</span>
+                <input matInput formControlName="id"  readonly>
+            </mat-form-field>
+          <!-- Code -->
+          <mat-form-field hintLabel="Max 10 characters">
+            <input matInput #code  maxlength="10" (input)="code.value=$event.target.value.toUpperCase()" placeholder="Model code" formControlName="code">
+            <mat-hint align="end">{{code.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="handleError('code', 'required')">
+              You must provide a <strong>model code</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <!-- Name -->
+          <mat-form-field>
+            <input maxlength="10" matInput #modelName placeholder="Model name" formControlName="modelName">
+            <mat-hint align="end">{{modelName.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="handleError('modelName', 'required')">
+              You must provide a <strong>model name</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+
+          <!-- Type -->
+          <mat-form-field>
+            <input maxlength="10" matInput #modelType placeholder="Type" formControlName="modelType">
+            <mat-hint align="end">{{modelType.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="handleError('modelType', 'required')">
+              You must provide a <strong> type</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <!-- Engine -->
+          <mat-form-field>
+            <input maxlength="10" matInput #modelEngineType placeholder="Engine" formControlName="modelEngineType">
+            <mat-hint align="end">{{modelEngineType.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="handleError('modelEngineType', 'required')">
+              You must provide a <strong> Engine</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+
+
+
+          <mat-form-field>
+            <input matInput placeholder="Amount Base Price" type="number" class="example-right-align" formControlName="basePrice" >
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+          </mat-form-field>
+
+
+
+          <!-- Description -->
+          <mat-form-field>
+            <textarea matInput #description placeholder="Description" formControlName="description"></textarea>
+            <mat-hint align="end">{{description.value?.length || 0}}/100</mat-hint>
+            <mat-error *ngIf="handleError('description', 'maxlength')">
+              Max length is 100.
+            </mat-error>
+          </mat-form-field>
+
+       <!-- Submit & Reset -->
+
+        <div class="full-wrapper button-wrapper">
+          <div class="button-wrapper">
+            <button type="submit" mat-flat-button color="primary">Save</button>
+            <button  (click)="onFormCanceled()" type="button" mat-flat-button >Cancel</button>
+          </div>
+        </div>
+        </div>
+
+    </form>
+
+</div>

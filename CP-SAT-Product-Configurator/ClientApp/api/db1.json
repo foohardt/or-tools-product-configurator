@@ -1,0 +1,14 @@
+{
+  "models": [
+
+    {
+      "id": 8,
+      "code": "B-X3",
+      "modelName": "BMW X3",
+      "modelType": "SUV",
+      "modelEngineType": "Diesel",
+      "basePrice": 30000
+    }
+
+  ]
+}

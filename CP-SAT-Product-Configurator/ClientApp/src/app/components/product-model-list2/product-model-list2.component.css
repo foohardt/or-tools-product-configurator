@@ -1,0 +1,31 @@
+.mat-column-id{
+  width: 30px;
+}
+
+.mat-column-code{
+  width: 100px;
+}
+
+td.mat-column-modelName{
+  color: darkblue;
+  font-weight: bold;
+
+}
+
+.mat-column-modelType{
+  width: 150px;
+}
+
+.mat-column-modelEngineType{
+  width: 150px;
+}
+
+.mat-column-basePrice{
+  width: 100px;
+}
+
+.mat-column-action{
+  width:200px;
+  text-align: center;
+
+}

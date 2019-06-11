@@ -40,7 +40,7 @@ namespace CP_SAT_Product_Configurator.Controllers
         {
             _modelService.Create(model);
 
-            return CreatedAtRoute("GetModel", new { id = model._Id.ToString() }, model);
+            return CreatedAtRoute("GetModel", new { id = model.Id.ToString() }, model);
         }
 
         [HttpPut("{id:length(24)}")]
@@ -83,7 +83,7 @@ namespace CP_SAT_Product_Configurator.Controllers
                 return NotFound();
             }
 
-            _modelService.Remove(model._Id);
+            _modelService.Remove(model.Id);
 
             return NoContent();
         }

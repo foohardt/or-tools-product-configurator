@@ -1,34 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { ProductModelEditComponent } from './components/product-model-edit/product-model-edit.component';
+import { ProductModelListComponent } from './components/product-model-list/product-model-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './material.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductModelService } from './shared/product-model-service';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductModelList2Component } from './components/product-model-list2/product-model-list2.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { APP_BASE_HREF } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    ProductModelEditComponent,
+    ProductModelListComponent,
+    ProductModelList2Component,
+    ConfirmDialogComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    BrowserModule,
+    HttpClientModule ,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    AngularFontAwesomeModule,
+    FlexLayoutModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  // providers: [ ProductModelService, {provide: APP_BASE_HREF, useValue: '/' + (window.location.pathname.split('/')[1] || '')} ],
+  providers: [ ProductModelService ],
+  entryComponents: [ConfirmDialogComponent],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

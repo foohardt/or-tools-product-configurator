@@ -26,7 +26,7 @@ namespace CP_SAT_Product_Configurator.Services
 
         public Model Get(string id)
         {
-            return _models.Find<Model>(model => model._Id == id).FirstOrDefault();
+            return _models.Find<Model>(model => model.Id == id).FirstOrDefault();
         }
 
         public Model Create(Model model)
@@ -37,17 +37,17 @@ namespace CP_SAT_Product_Configurator.Services
 
         public void Update(string id, Model modelIn)
         {
-            _models.ReplaceOne(model => model._Id == id, modelIn);
+            _models.ReplaceOne(model => model.Id == id, modelIn);
         }
 
         public void Remove(Model modelIn)
         {
-            _models.DeleteOne(model => model._Id == modelIn._Id);
+            _models.DeleteOne(model => model.Id == modelIn.Id);
         }
 
         public void Remove(string id)
         {
-            _models.DeleteOne(model => model._Id == id);
+            _models.DeleteOne(model => model.Id == id);
         }
     }
 }

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "or-tools-app",
+
+  "builds": [
+    {
+      "src": "dist/or-app/*",
+      "use": "@now/static",
+      "config": { "distDir": "../../" }
+    }
+  ]
+
+}
