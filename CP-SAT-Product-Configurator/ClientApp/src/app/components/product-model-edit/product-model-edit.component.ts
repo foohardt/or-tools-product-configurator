@@ -9,11 +9,19 @@ import { ProductModelService } from 'src/app/shared/product-model-service';
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
 
+
+export interface ValueLabelType {
+  value: number;
+  label: string;
+}
+
 @Component({
   selector: 'app-product-model-edit',
   templateUrl: './product-model-edit.component.html',
   styleUrls: ['./product-model-edit.component.css']
 })
+
+
 
 export class ProductModelEditComponent {
 
@@ -31,15 +39,14 @@ export class ProductModelEditComponent {
     if ( id ) {
     this.isUpdating = true;
     this.pmService.getSingle(id).subscribe(data => {
-    console.log(data.id);
 
     this.productModelForm = this.fb.group({
         id: [{value: data.id, disabled: false }, [Validators.required]],
         code: [data.code, [Validators.required]],
         modelName: [data.modelName, [Validators.required]],
-        modelType: [data.modelType, [Validators.required]],
+        modelCategory: [data.modelCategory, [Validators.required]],
         modelEngineType: [data.modelEngineType, [Validators.required]],
-        basePrice: [data.basePrice],
+        modelPrice: [data.modelPrice],
         description: [data.description, [Validators.maxLength(100)]]
       });
     });
@@ -51,9 +58,9 @@ export class ProductModelEditComponent {
       id: new FormControl({ value: '00000', disabled: true }),
       code: new FormControl(null, [Validators.required]),
       modelName: new FormControl('', [Validators.required]),
-      modelType: new FormControl('', [Validators.required]),
-      modelEngineType: new FormControl('', [Validators.required]),
-      basePrice: new FormControl(''),
+      modelCategory: new FormControl(null, [Validators.required]),
+      modelEngineType: new FormControl(null, [Validators.required]),
+      modelPrice: new FormControl(''),
       description: new FormControl('', [Validators.maxLength(100)])
     });
 
@@ -61,6 +68,26 @@ export class ProductModelEditComponent {
   productModel = ProductModelFactory.empty();
 
   isUpdating = false;
+
+  // hard wired, same values as public enum ModelCategory in Model.cs
+  modelCategoryValues: ValueLabelType[] = [
+    {value: 1, label: 'Compact'},
+    {value: 2, label: 'Sedan'},
+    {value: 3, label: 'SUV'},
+    {value: 4, label: '4WD'},
+    {value: 5, label: 'Sportscar'},
+    {value: 6, label: 'Van'},
+    {value: 7, label: 'Mini'},
+    {value: 8, label: 'Truck'}
+  ];
+
+    // hard wired, same values as public enum ModelCategory in Model.cs
+  modelEngineTypeValues: ValueLabelType[] = [
+    {value: 1, label: 'Diesel'},
+    {value: 2, label: 'Otto'},
+    {value: 3, label: 'Elektro'},
+    {value: 4, label: 'Hybrid'}
+  ];
 
   onFormSubmit() {
 
@@ -87,12 +114,12 @@ export class ProductModelEditComponent {
 
     if (this.isUpdating) {
       this.pmService.update(pm).subscribe(res => {
-        this.router.navigate(['/product-model-list'], { relativeTo: this.route });
+        this.router.navigate(['/product-model-list2'], { relativeTo: this.route });
         // this.router.navigate(['/product-model-list', pm.id], { relativeTo: this.route });
       });
     } else {
       this.pmService.create(pm).subscribe(res => {
-        this.router.navigate(['/product-model-list'], { relativeTo: this.route });
+        this.router.navigate(['/product-model-list2'], { relativeTo: this.route });
         this.productModel = ProductModelFactory.empty();
         this.productModelForm.reset(ProductModelFactory.empty());
       });

@@ -4,7 +4,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductModelEditComponent } from './components/product-model-edit/product-model-edit.component';
-import { ProductModelListComponent } from './components/product-model-list/product-model-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -22,7 +21,6 @@ import { APP_BASE_HREF } from '@angular/common';
   declarations: [
     AppComponent,
     ProductModelEditComponent,
-    ProductModelListComponent,
     ProductModelList2Component,
     ConfirmDialogComponent
   ],

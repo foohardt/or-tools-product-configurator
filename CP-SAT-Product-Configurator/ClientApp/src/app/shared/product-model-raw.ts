@@ -2,10 +2,10 @@ export interface ProductModelRaw {
   id: string;
   code: string;
   modelName: string;
-  modelType: string;
-  modelEngineType: string;
+  modelCategory: number;
+  modelEngineType: number;
   customerRating: number;
   internalRating: number;
-  basePrice: number;
+  modelPrice: number;
   description: string;
 }

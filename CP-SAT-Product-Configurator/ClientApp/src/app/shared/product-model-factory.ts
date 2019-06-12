@@ -12,11 +12,11 @@ export class ProductModelFactory {
       rawProductModel.id,
       rawProductModel.code,
       rawProductModel.modelName,
-      rawProductModel.modelType,
+      rawProductModel.modelCategory,
       rawProductModel.modelEngineType,
       rawProductModel.customerRating,
       rawProductModel.internalRating,
-      rawProductModel.basePrice,
+      rawProductModel.modelPrice,
       rawProductModel.description
     );
   }

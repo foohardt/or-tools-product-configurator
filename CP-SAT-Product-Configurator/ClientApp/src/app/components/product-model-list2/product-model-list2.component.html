@@ -31,17 +31,19 @@
         <td mat-cell *matCellDef="let element"> {{element.modelName}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="modelType">
-        <th mat-header-cell *matHeaderCellDef  mat-sort-header>Type</th>
-        <td mat-cell *matCellDef="let element"> {{element.modelType}} </td>
+      <ng-container matColumnDef="modelCategory">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header>Category</th>
+        <td mat-cell *matCellDef="let element"> {{element.modelCategory}} </td>
       </ng-container>
+
       <ng-container matColumnDef="modelEngineType">
         <th mat-header-cell *matHeaderCellDef  mat-sort-header>Engine</th>
         <td mat-cell *matCellDef="let element"> {{element.modelEngineType}} </td>
       </ng-container>
-      <ng-container matColumnDef="basePrice">
-        <th mat-header-cell *matHeaderCellDef  mat-sort-header>Base Price</th>
-        <td mat-cell *matCellDef="let element"> {{element.basePrice}} </td>
+
+      <ng-container matColumnDef="modelPrice">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header>Model Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.modelPrice}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action" >

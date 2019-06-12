@@ -16,7 +16,7 @@ export class ProductModelList2Component implements AfterViewInit, OnInit {
 
 
   productModelList: ProductModel[];
-  displayedColumns: string[] = ['id', 'code', 'modelName', 'modelType', 'modelEngineType', 'basePrice', 'action' ];
+  displayedColumns: string[] = ['id', 'code', 'modelName', 'modelCategory', 'modelEngineType', 'modelPrice', 'action' ];
 
   public dataSource = new MatTableDataSource<ProductModel>();
 

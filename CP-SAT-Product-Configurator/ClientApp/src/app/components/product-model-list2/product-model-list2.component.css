@@ -1,9 +1,12 @@
+
+
 .mat-column-id{
-  width: 30px;
+  width: 200px;
 }
 
+
 .mat-column-code{
-  width: 100px;
+  width: 80px;
 }
 
 td.mat-column-modelName{
@@ -12,15 +15,15 @@ td.mat-column-modelName{
 
 }
 
-.mat-column-modelType{
-  width: 150px;
+.mat-column-modelCategory{
+  width: 100px;
 }
 
 .mat-column-modelEngineType{
-  width: 150px;
+  width: 100px;
 }
 
-.mat-column-basePrice{
+.mat-column-modelPrice{
   width: 100px;
 }
 

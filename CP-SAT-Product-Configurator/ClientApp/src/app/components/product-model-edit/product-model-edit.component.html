@@ -41,29 +41,34 @@
 
           <!-- Type -->
           <mat-form-field>
-            <input maxlength="10" matInput #modelType placeholder="Type" formControlName="modelType">
-            <mat-hint align="end">{{modelType.value?.length || 0}}/10</mat-hint>
-            <mat-error *ngIf="handleError('modelType', 'required')">
-              You must provide a <strong> type</strong>
+            <mat-label>Model Category</mat-label>
+            <mat-select   #modelCategory  formControlName="modelCategory" required>
+              <mat-option *ngFor="let x of modelCategoryValues" [value]="x.value">
+                {{x.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('modelCategory', 'required')">
+              You must provide a <strong> Type</strong>
             </mat-error>
           </mat-form-field>
-
 
           <!-- Engine -->
           <mat-form-field>
-            <input maxlength="10" matInput #modelEngineType placeholder="Engine" formControlName="modelEngineType">
-            <mat-hint align="end">{{modelEngineType.value?.length || 0}}/10</mat-hint>
+            <mat-label>Engine type</mat-label>
+            <mat-select   #modelEngineType  formControlName="modelEngineType" required>
+              <mat-option *ngFor="let t of modelEngineTypeValues" [value]="t.value">
+                {{t.label}}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="handleError('modelEngineType', 'required')">
-              You must provide a <strong> Engine</strong>
+              You must provide a <strong> Engine Type</strong>
             </mat-error>
           </mat-form-field>
 
 
 
-
-
           <mat-form-field>
-            <input matInput placeholder="Amount Base Price" type="number" class="example-right-align" formControlName="basePrice" >
+            <input matInput placeholder="Model Price" type="number" class="example-right-align" formControlName="modelPrice" >
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
           </mat-form-field>
