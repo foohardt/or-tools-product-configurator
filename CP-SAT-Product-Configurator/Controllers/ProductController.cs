@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using CP_SAT_Product_Configurator.Services;
+
+namespace CP_SAT_Product_Configurator.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
+    {
+        private readonly ProductConfigurationService service;
+
+        public ProductController(ProductConfigurationService productConfigurationService)
+        {
+            service = productConfigurationService;
+        }
+
+        [HttpGet]
+        public ActionResult<String> Get()
+        {
+            return service.ConfigureProduct();
+        }
+
+    }
+}
