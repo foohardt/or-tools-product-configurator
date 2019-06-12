@@ -29,8 +29,6 @@ namespace CP_SAT_Product_Configurator.Models
 
         [BsonElement("description")]
         public string description { get; set; }
-
-
     }
     public enum ModelCategory
     {
@@ -41,6 +39,4 @@ namespace CP_SAT_Product_Configurator.Models
     {
         Diesel = 1, Otto = 2, Elektro = 3, Hybrid = 4
     };
-
-
 }

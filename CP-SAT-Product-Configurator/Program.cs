@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using CP_SAT_Product_Configurator.Services;
 
 namespace CP_SAT_Product_Configurator
 {
