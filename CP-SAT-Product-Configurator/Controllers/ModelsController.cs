@@ -57,24 +57,6 @@ namespace CP_SAT_Product_Configurator.Controllers
 
             return NoContent();
         }
-/* 
- *  PUT fur Edit funktioniert nicht, wenn der Code hier aktiv ist.
- * 
-        [HttpPut]
-        public ActionResult<Model> Features(string id, Model modelIn)
-        {
-            var model = _modelService.Get(id);
-
-            if (model == null)
-            {
-                return NotFound();
-            }
-
-            _modelService.Update(id, modelIn);
-
-            return NoContent();
-        }
-*/
 
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)

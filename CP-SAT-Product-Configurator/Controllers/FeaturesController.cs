@@ -10,11 +10,11 @@ namespace CP_SAT_Product_Configurator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class FeaturesController : ControllerBase
     {
         private readonly ProductConfigurationService service;
 
-        public ProductController(ProductConfigurationService productConfigurationService)
+        public FeaturesController(ProductConfigurationService productConfigurationService)
         {
             service = productConfigurationService;
         }

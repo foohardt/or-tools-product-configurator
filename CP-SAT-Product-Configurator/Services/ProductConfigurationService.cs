@@ -6,45 +6,77 @@ using Google.OrTools.Sat;
 
 namespace CP_SAT_Product_Configurator.Services
 {
-    public class ProductConfigurationService
+    public class VarArraySolutionPrinter : CpSolverSolutionCallback
     {
-        public ProductConfigurationService()
+        public VarArraySolutionPrinter(IntVar[] variables)
         {
-
+            variables_ = variables;
         }
 
-        public string ConfigureProduct()
+        public override void OnSolutionCallback()
         {
-            Console.WriteLine("Product configuration started.");
-            // Create model
+            {
+                Console.WriteLine(String.Format("Solution #{0}: time = {1:F2} s",
+                                                solution_count_, WallTime()));
+                foreach (IntVar v in variables_)
+                {
+                    Console.WriteLine(
+                        String.Format("  {0} = {1}", v.ShortString(), Value(v)));
+                }
+                solution_count_++;
+            }
+        }
+
+        public int SolutionCount()
+        {
+            return solution_count_;
+        }
+
+        private int solution_count_;
+        private IntVar[] variables_;
+    }
+    public class ProductConfigurationService
+    {
+        public void ConfigureProduct()
+        {
+            Console.WriteLine("Configuration started.");
+            // Create model.
             CpModel model = new CpModel();
 
-            // Create Variables with values 1, 2 and 3
-            int num_vals = 3;
+            // Creates variables.
+            int num_engines = 3;
+            int num_gears = 2;
 
-            IntVar x = model.NewIntVar(0, num_vals - 1, "x");
-            IntVar y = model.NewIntVar(0, num_vals - 1, "y");
-            IntVar z = model.NewIntVar(0, num_vals - 1, "z");
+            int id_electro = 2;
+            int id_manual = 0;
 
-            // Create Constraint
-            model.Add(x != y);
+            IntVar engines = model.NewIntVar(0, num_engines - 1, "engines");
+            IntVar gears = model.NewIntVar(0, num_gears - 1, "gears");
 
-            // Call solver and asign status
+            IntVar electro = model.NewIntVar(id_electro, id_electro, "id_electro");
+            IntVar manual = model.NewIntVar(id_manual, id_manual, "id_manual");
+
+            Console.WriteLine("engines: " + engines);
+            Console.WriteLine("gears: " + gears);
+
+            // Adds constraints
+            model.Add(electro != manual);
+
+
+
+            // Creates a solver and solves the model.
             CpSolver solver = new CpSolver();
-            CpSolverStatus status = solver.Solve(model);
+            VarArraySolutionPrinter cb =
+                new VarArraySolutionPrinter(new IntVar[] { engines, gears });
+            solver.SearchAllSolutions(model, cb);
 
-            // Display feasible solution
-                if (status == CpSolverStatus.Feasible)
-                {
-                    Console.WriteLine("x = " + solver.Value(x));
-                    Console.WriteLine("x = " + solver.Value(y));
-                    Console.WriteLine("x = " + solver.Value(z));
-                }
-
-            return null;
+            Console.WriteLine(String.Format("Number of solutions found: {0}",
+                                            cb.SolutionCount()));
         }
     }
 }
+
+
 
 
 
