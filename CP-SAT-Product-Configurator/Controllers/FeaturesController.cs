@@ -22,7 +22,8 @@ namespace CP_SAT_Product_Configurator.Controllers
         [HttpGet]
         public ActionResult<String> Get()
         {
-            return service.ConfigureProduct();
+            service.ConfigureProduct();
+            return null;
         }
 
     }

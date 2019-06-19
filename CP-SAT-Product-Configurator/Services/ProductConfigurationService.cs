@@ -39,39 +39,39 @@ namespace CP_SAT_Product_Configurator.Services
     {
         public void ConfigureProduct()
         {
-            Console.WriteLine("Configuration started.");
-            // Create model.
+            this.ConfigureFirstDomain(1); ;
+        }
+
+        public void ConfigureFirstDomain(int engineType)
+        {
+            // Create model
             CpModel model = new CpModel();
 
             // Creates variables.
-            int num_engines = 3;
-            int num_gears = 2;
+            int numEngines = 2;
+            int numGears = 2;
 
-            int id_electro = 2;
-            int id_manual = 0;
+            int idManualGear = 0;
 
-            IntVar engines = model.NewIntVar(0, num_engines - 1, "engines");
-            IntVar gears = model.NewIntVar(0, num_gears - 1, "gears");
+            IntVar allEngines = model.NewIntVar(0, numEngines - 1, "engines");
+            IntVar allGears = model.NewIntVar(0, numGears - 1, "gears");
 
-            IntVar electro = model.NewIntVar(id_electro, id_electro, "id_electro");
-            IntVar manual = model.NewIntVar(id_manual, id_manual, "id_manual");
+            IntVar gasEngine = model.NewConstant(0, "gas");
+            IntVar electroEngine = model.NewConstant(1, "electro");
 
-            Console.WriteLine("engines: " + engines);
-            Console.WriteLine("gears: " + gears);
-
-            // Adds constraints
-            model.Add(electro != manual);
-
-
+            IntVar gasAvailableGears = model.NewIntVar(0, numGears - 1, "gasAvailableGears");
+            IntVar electroAvailableGears = model.NewConstant(1, "electroAvailableGears");
+    
+            model.Add(electroEngine != idManualGear);
 
             // Creates a solver and solves the model.
             CpSolver solver = new CpSolver();
             VarArraySolutionPrinter cb =
-                new VarArraySolutionPrinter(new IntVar[] { engines, gears });
+                new VarArraySolutionPrinter(new IntVar[] { gasAvailableGears, electroAvailableGears });
             solver.SearchAllSolutions(model, cb);
 
             Console.WriteLine(String.Format("Number of solutions found: {0}",
-                                            cb.SolutionCount()));
+                                            cb.SolutionCount()));                                  
         }
     }
 }
