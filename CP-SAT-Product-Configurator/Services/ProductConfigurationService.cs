@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Google.OrTools.Sat;
 
 namespace CP_SAT_Product_Configurator.Services
 {
+
     public class VarArraySolutionPrinter : CpSolverSolutionCallback
     {
         public VarArraySolutionPrinter(IntVar[] variables)
@@ -41,6 +39,7 @@ namespace CP_SAT_Product_Configurator.Services
     {
         public void ConfigureProduct()
         {
+
             this.ConfigureFirstDomain(0);
             Console.WriteLine("-------------------------------------");
             this.ConfigureFirstDomain(1);

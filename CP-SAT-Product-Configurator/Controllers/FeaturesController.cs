@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using CP_SAT_Product_Configurator.Models;
 using CP_SAT_Product_Configurator.Services;
 
 namespace CP_SAT_Product_Configurator.Controllers
@@ -12,18 +13,29 @@ namespace CP_SAT_Product_Configurator.Controllers
     [ApiController]
     public class FeaturesController : ControllerBase
     {
-        private readonly ProductConfigurationService service;
+        private readonly ProductConfigurationService _productService;
+        private readonly EngineService _engineService;
+        private readonly GearService _gearService;
 
-        public FeaturesController(ProductConfigurationService productConfigurationService)
+        public FeaturesController(
+                ProductConfigurationService productConfigurationService,
+                EngineService engineService,
+                GearService gearService
+            )
         {
-            service = productConfigurationService;
+            _productService = productConfigurationService;
+            _engineService = engineService;
+            _gearService = gearService;
         }
 
         [HttpGet]
-        public ActionResult<String> Get([FromQuery]int engine, int category)
+        public ActionResult<List<Engine>> Get([FromQuery]int engine, int category)
         {
-            service.ConfigureProduct();
-            return null;
+            _productService.ConfigureProduct();
+            var engines = _engineService.Get();
+            var gears = _gearService.Get();
+
+            return engines;
         }
 
     }
