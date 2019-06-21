@@ -8,7 +8,7 @@ using CP_SAT_Product_Configurator.Services;
 
 namespace CP_SAT_Product_Configurator.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class FeaturesController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace CP_SAT_Product_Configurator.Controllers
         }
 
         [HttpGet]
-        public ActionResult<String> Get()
+        public ActionResult<String> Get([FromQuery]int engine, int category)
         {
             service.ConfigureProduct();
             return null;
