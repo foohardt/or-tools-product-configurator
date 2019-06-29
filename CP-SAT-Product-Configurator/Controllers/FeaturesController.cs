@@ -13,29 +13,17 @@ namespace CP_SAT_Product_Configurator.Controllers
     [ApiController]
     public class FeaturesController : ControllerBase
     {
-        private readonly ProductConfigurationService _productService;
-        private readonly EngineService _engineService;
-        private readonly GearService _gearService;
+        private readonly ProductConfigurator _productConfigurator;
 
-        public FeaturesController(
-                ProductConfigurationService productConfigurationService,
-                EngineService engineService,
-                GearService gearService
-            )
+        public FeaturesController(ProductConfigurator productConfigurator)
         {
-            _productService = productConfigurationService;
-            _engineService = engineService;
-            _gearService = gearService;
+            _productConfigurator = productConfigurator;
         }
 
         [HttpGet]
-        public ActionResult<List<Engine>> Get([FromQuery]int engine, int category)
+        public ActionResult<Product> Get([FromQuery]EngineType engine, Category category)
         {
-            _productService.ConfigureProduct();
-            var engines = _engineService.Get();
-            var gears = _gearService.Get();
-
-            return engines;
+                 return _productConfigurator.ConfigureProduct(engine, category);
         }
 
     }

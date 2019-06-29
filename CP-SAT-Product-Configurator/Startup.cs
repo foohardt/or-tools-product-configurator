@@ -37,9 +37,11 @@ namespace CP_SAT_Product_Configurator
             });
 
             services.AddScoped<ModelService>();
-            services.AddScoped<ProductConfigurationService>();
+            services.AddScoped<ProductConfigurator>();
             services.AddScoped<EngineService>();
             services.AddScoped<GearService>();
+            services.AddScoped<WheelsService>();
+            services.AddScoped<EquipmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
