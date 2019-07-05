@@ -1,8 +1,15 @@
 # or-tool-product-configurator
-Product configurator using constraint programming
+Product configurator using constraint programming using Google OR-Tools
 
-This is a project I'm doing during my BSc study of information systems. The task ist to develop a product 
-configurator using constraint programming implemented with Google OR-Tools. The frontend ist done by Uwe Jakob.
+This is a project I did during my BSc study of information systems. The task was to develop a web based product 
+configurator using constraint programming implemented with Google OR-Tools. 
+
+The frontend was implemented by Uwe Jakob. The original code is stored within the client's bitbucket instance.  
 
 <h2>Technologies used</h2>
-Angular, ASP.NET core, MongoDB, Google OR-Tools
+
+Frontend:
+*Angular, Hammer.js, zone.js
+
+Backend
+*ASP.NET core, MongoDB, Google OR-Tools
