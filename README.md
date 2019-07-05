@@ -9,7 +9,10 @@ The frontend was implemented by Uwe Jakob. The original code is stored within th
 <h2>Technologies used</h2>
 
 Frontend:
-*Angular, Hammer.js, zone.js
-
-Backend
-*ASP.NET core, MongoDB, Google OR-Tools
+<ul>
+<li>Angular, Hammer.js, zone.js</li>
+</ul>
+Backend:
+<ul>
+<li>ASP.NET core, MongoDB, Google OR-Tools</li>
+</ul>
