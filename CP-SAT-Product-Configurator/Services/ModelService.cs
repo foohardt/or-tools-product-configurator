@@ -11,7 +11,7 @@ namespace CP_SAT_Product_Configurator.Services
     public class ModelService
     {
         private readonly IMongoCollection<Model> _models;
-        
+
         public ModelService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("ConfiguratorDb"));

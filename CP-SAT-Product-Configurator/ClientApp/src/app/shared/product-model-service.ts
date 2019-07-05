@@ -12,14 +12,39 @@ import { throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
+
+export interface ValueLabelType {
+  value: number;
+  label: string;
+}
+
 @Injectable()
 export class ProductModelService {
 
-  private api = environment.apiUrl;
 
+  constructor(private http: HttpClient) { }
+
+
+  private api = environment.apiUrl;
   private apiApp = 'models';
 
-  constructor(private http: HttpClient) {}
+
+  getCategoryTypes(): string[] {
+    return ProductModelFactory.categoryTypes;
+  }
+
+  getEngineTypes(): string[] {
+    return ProductModelFactory.engineTypes;
+  }
+
+  getEngineTypeName(index: number): string {
+    return ProductModelFactory.getEngineTypeName(index);
+  }
+
+  getCategoryTypeName(index: number): string {
+    return ProductModelFactory.getCategoryTypeName(index);
+  }
+
 
   getAll(): Observable<Array<ProductModel>> {
     return this.http

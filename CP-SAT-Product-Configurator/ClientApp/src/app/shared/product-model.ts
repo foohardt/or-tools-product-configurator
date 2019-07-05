@@ -1,6 +1,10 @@
 import { KeyValue } from '@angular/common';
 
 export class ProductModel {
+
+  engineTypeName: string;
+  categoryName: string;
+
   constructor(
     public id: string,
     public code: string,
@@ -12,5 +16,6 @@ export class ProductModel {
     public modelPrice: number,
     public description: string
     ) {
+
   }
 }

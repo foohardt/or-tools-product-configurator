@@ -43,8 +43,8 @@
           <mat-form-field>
             <mat-label>Model Category</mat-label>
             <mat-select   #modelCategory  formControlName="modelCategory" required>
-              <mat-option *ngFor="let x of modelCategoryValues" [value]="x.value">
-                {{x.label}}
+              <mat-option *ngFor="let x of modelCategoryValues; let i = index" [value]="i">
+                {{x}}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="handleError('modelCategory', 'required')">
@@ -56,8 +56,8 @@
           <mat-form-field>
             <mat-label>Engine type</mat-label>
             <mat-select   #modelEngineType  formControlName="modelEngineType" required>
-              <mat-option *ngFor="let t of modelEngineTypeValues" [value]="t.value">
-                {{t.label}}
+              <mat-option *ngFor="let t of modelEngineTypeValues; let i = index" [value]="i">
+                {{t}}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="handleError('modelEngineType', 'required')">
@@ -88,11 +88,18 @@
 
         <div class="full-wrapper button-wrapper">
           <div class="button-wrapper">
-            <button type="submit" mat-flat-button color="primary">Save</button>
-            <button  (click)="onFormCanceled()" type="button" mat-flat-button >Cancel</button>
+            <button type="submit" mat-stroked-button color="primary">Save</button>
+            <button  (click)="onFormCanceled()" type="button" mat-stroked-button >Cancel</button>
+            <!-- <button  (click)="showAvailableFeatures()" type="button" mat-stroked-button >Show..</button> -->
+            <button  type="button" mat-stroked-button class="button-right"  [routerLink]=
+            "['/product-model-features/', productModelForm.controls['modelCategory'].value,'engine', productModelForm.controls['modelEngineType'].value ]"  >Show Available Features</button>
           </div>
         </div>
         </div>
+
+
+
+
 
     </form>
 

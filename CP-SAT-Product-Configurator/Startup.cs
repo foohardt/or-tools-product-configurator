@@ -26,7 +26,7 @@ namespace CP_SAT_Product_Configurator
             {
                 builder.WithOrigins("http://localhost:4200").
                     AllowAnyMethod().AllowAnyHeader().AllowAnyMethod(); ;
-            })); 
+            }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -82,8 +82,8 @@ namespace CP_SAT_Product_Configurator
                 if (env.IsDevelopment())
                 {
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                } 
-            });  
+                }
+            });
         }
     }
 }

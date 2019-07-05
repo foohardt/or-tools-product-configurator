@@ -5,15 +5,10 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 
 import { AngularMaterialModule } from './../../material.module';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductModelService } from 'src/app/shared/product-model-service';
+import { ProductModelService, ValueLabelType } from 'src/app/shared/product-model-service';
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
-
-
-export interface ValueLabelType {
-  value: number;
-  label: string;
-}
+import { ProductFeatureService } from 'src/app/shared/product-features-service';
 
 @Component({
   selector: 'app-product-model-edit',
@@ -24,6 +19,10 @@ export interface ValueLabelType {
 
 
 export class ProductModelEditComponent {
+  modelCategoryValues: string[];
+  modelEngineTypeValues: string[];
+
+
 
   constructor(
     public fb: FormBuilder,
@@ -33,6 +32,13 @@ export class ProductModelEditComponent {
     private pmService: ProductModelService,
     private dialog: MatDialog
   ) {
+
+
+
+    this.modelCategoryValues = this.pmService.getCategoryTypes();
+    this.modelEngineTypeValues = this.pmService.getEngineTypes();
+
+
 
     const id: string = this.route.snapshot.paramMap.get('id');
 
@@ -69,27 +75,9 @@ export class ProductModelEditComponent {
 
   isUpdating = false;
 
-  // hard wired, same values as public enum ModelCategory in Model.cs
-  modelCategoryValues: ValueLabelType[] = [
-    {value: 1, label: 'Compact'},
-    {value: 2, label: 'Sedan'},
-    {value: 3, label: 'SUV'},
-    {value: 4, label: '4WD'},
-    {value: 5, label: 'Sportscar'},
-    {value: 6, label: 'Van'},
-    {value: 7, label: 'Mini'},
-    {value: 8, label: 'Truck'}
-  ];
 
-    // hard wired, same values as public enum ModelCategory in Model.cs
-  modelEngineTypeValues: ValueLabelType[] = [
-    {value: 1, label: 'Diesel'},
-    {value: 2, label: 'Otto'},
-    {value: 3, label: 'Elektro'},
-    {value: 4, label: 'Hybrid'}
-  ];
 
-  onFormSubmit() {
+ public onFormSubmit() {
 
     // filter empty values
     // this.productModelForm.value.code = this.productModelForm.value.code.filter(c => c);
@@ -140,8 +128,22 @@ export class ProductModelEditComponent {
   }
   */
 
-  onFormCanceled() {
+  public onFormCanceled() {
     this.ngZone.run(() => this.router.navigateByUrl('/product-model-list2'));
+  }
+
+  public showAvailableFeatures() {
+    const pm: ProductModel = ProductModelFactory.fromObject(this.productModelForm.value);
+
+    // this.ngZone.run(() => this.router.navigateByUrl('/product-model-features/'));
+    const url = `${/product-model-features/}${ pm.modelCategory }/engine/${pm.modelEngineType}`;
+    this.router.navigateByUrl(url).then(e => {
+      if (e) {
+        console.log('Navigation is successful!');
+      } else {
+        console.log('Navigation has failed!');
+      }
+    });
   }
 
   public handleError = (controlName: string, errorName: string) => {

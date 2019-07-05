@@ -1,0 +1,65 @@
+<div class="title-group">
+  <h1 class="mat-h1">Available Features </h1>
+  <mat-divider></mat-divider>
+
+  <h3>Engine: <b>{{engineName}}</b> Category:<b> {{categoryName}}</b></h3>
+
+
+</div>
+
+<!--
+categoryId: {{categoryId}}
+  categoryName: {{categoryName}}
+  {{features | json}}
+ -->
+
+<table class="feature-lists">
+  <tr>
+    <td>
+      <mat-list>
+        <h3 mat-subheader>Engines</h3>
+        <mat-list-item *ngFor="let engine of features?.engines">
+          <mat-icon mat-list-icon>healing</mat-icon>
+          <h4 mat-line>{{engine.name}}</h4>
+          <p mat-line>({{engine.type}}) </p>
+        </mat-list-item>
+      </mat-list>
+    </td>
+    <td>
+      <mat-list>
+        <h3 mat-subheader>Gears</h3>
+        <mat-list-item *ngFor="let gear of features?.gears">
+          <mat-icon mat-list-icon>settings</mat-icon>
+          <h4 mat-line>{{gear.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </td>
+    <td>
+      <mat-list>
+
+        <h3 mat-subheader>Wheels</h3>
+        <mat-list-item *ngFor="let wheel of features?.wheels">
+          <mat-icon mat-list-icon>chevron_right</mat-icon>
+          <h4 mat-line>{{wheel.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </td>
+    <td>
+      <mat-list>
+
+        <h3 mat-subheader>Equipment</h3>
+        <mat-list-item *ngFor="let equipment of features?.equipment">
+          <mat-icon mat-list-icon>check</mat-icon>
+          <h4 mat-line>{{equipment.name}}</h4>
+        </mat-list-item>
+
+      </mat-list>
+    </td>
+  </tr>
+</table>
+
+<div class="full-wrapper button-wrapper">
+  <div class="button-wrapper">
+    <button (click)="cancel()" type="button" mat-stroked-button>Back</button>
+  </div>
+</div>

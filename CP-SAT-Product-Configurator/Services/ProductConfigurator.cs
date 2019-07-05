@@ -5,7 +5,7 @@ using Google.OrTools.Sat;
 using CP_SAT_Product_Configurator.Models;
 
 namespace CP_SAT_Product_Configurator.Services
-{   
+{
     public enum EngineType
     {
         Gas,
@@ -18,7 +18,6 @@ namespace CP_SAT_Product_Configurator.Services
         Suv,
         Sport
     }
-
     public class ProductConfigurator
     {
         private readonly EngineService _engineService;
@@ -61,7 +60,7 @@ namespace CP_SAT_Product_Configurator.Services
         {
             return feasible_equipment_;
         }
-            
+
         public Product ConfigureProduct(EngineType engine, Category category)
         {
             this.ConfigureFirstDomain(engine);
@@ -72,7 +71,7 @@ namespace CP_SAT_Product_Configurator.Services
             var gears = this.FeasibleGears();
             var wheels = this.FeasibleWheels();
             var equipment = this.FeasibleEquipment();
-                            
+
             Product product = new Product(engines, gears, wheels, equipment);
 
             return product;
@@ -118,7 +117,7 @@ namespace CP_SAT_Product_Configurator.Services
             {
                 var index = firstDomain.FindIndex(x => x.Identifier == gas.ShortString() && x.State == 1);
 
-                foreach(var s in firstDomain)
+                foreach (var s in firstDomain)
                 {
                     if (firstDomain[index + 2].State == 1 && firstDomain[index + 3].State == 1)
                     {
@@ -216,17 +215,17 @@ namespace CP_SAT_Product_Configurator.Services
 
             IntVar suv = model.NewBoolVar("suv");
             IntVar sport = model.NewBoolVar("sport");
-            
+
             IntVar ce0 = model.NewBoolVar("toilet roll holder");
             IntVar ce1 = model.NewBoolVar("child seat");
             IntVar ce2 = model.NewBoolVar("wobble dachshund");
             IntVar ce3 = model.NewBoolVar("seat heating");
-            
+
             IntVar se0 = model.NewBoolVar("keyless go");
             IntVar se1 = model.NewBoolVar("leather seats");
             IntVar se2 = model.NewBoolVar("electric windows");
             IntVar se3 = model.NewBoolVar("skylight");
-            
+
             IntVar ue0 = model.NewBoolVar("champanger bar");
             IntVar ue1 = model.NewBoolVar("enginge snorkel");
             IntVar ue2 = model.NewBoolVar("ashtray");
@@ -236,7 +235,7 @@ namespace CP_SAT_Product_Configurator.Services
             IntVar fe1 = model.NewBoolVar("nitro injection");
             IntVar fe2 = model.NewBoolVar("ejector seat");
             IntVar fe3 = model.NewBoolVar("spoiler");
-            
+
             model.AddBoolXor(new[] { compact, sedan, suv, sport });
 
             model.AddBoolAnd(new[] { ce0, ce1, ce2, ce3 }).OnlyEnforceIf(compact);

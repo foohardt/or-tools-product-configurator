@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5d15e491d009024b30e6093b"},"name":"90/45 17'","type":"electric"}
+{"_id":{"$oid":"5d15fb6bd009024b30e6093c"},"name":"165/55 12'","type":"gas"}
+{"_id":{"$oid":"5d15fb8ed009024b30e6093d"},"name":"195/65 16'","type":"gas"}
+{"_id":{"$oid":"5d15fba2d009024b30e6093e"},"name":"255/65 17'","type":"gas"}
+{"_id":{"$oid":"5d15fbb9d009024b30e6093f"},"name":"300/70 20'","type":"gas"}
+{"_id":{"$oid":"5d15fbccd009024b30e60940"},"name":"325/65 24'","type":"gas"}

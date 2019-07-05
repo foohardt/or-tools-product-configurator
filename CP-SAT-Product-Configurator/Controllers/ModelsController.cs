@@ -44,7 +44,7 @@ namespace CP_SAT_Product_Configurator.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Model  modelIn)
+        public IActionResult Update(string id, Model modelIn)
         {
             var model = _modelService.Get(id);
 

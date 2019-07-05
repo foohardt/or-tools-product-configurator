@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5d0c866c6d91b11f0c92bb9d"},"name":"Otto 45KW","type":"gas"}
+{"_id":{"$oid":"5d0c86886d91b11f0c92bb9e"},"name":"Otto 66KW","type":"gas"}
+{"_id":{"$oid":"5d0c869d6d91b11f0c92bb9f"},"name":"Otto 110","type":"gas"}
+{"_id":{"$oid":"5d0c86ab6d91b11f0c92bba0"},"name":"Otto 141KW","type":"gas"}
+{"_id":{"$oid":"5d0c86ff6d91b11f0c92bba1"},"name":"E 45KW","type":"electric"}
+{"_id":{"$oid":"5d0c870f6d91b11f0c92bba2"},"name":"E 55KW","type":"electric"}
+{"_id":{"$oid":"5d0c871e6d91b11f0c92bba3"},"name":"E 66KW","type":"electric"}
+{"_id":{"$oid":"5d0c87396d91b11f0c92bba4"},"name":"E 80KW","type":"electric"}

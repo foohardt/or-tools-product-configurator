@@ -15,6 +15,8 @@ import { ProductModelList2Component } from './components/product-model-list2/pro
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { ProductModelFeaturesComponent } from './components/product-model-features/product-model-features.component';
+import { ProductFeatureService } from './shared/product-features-service';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { APP_BASE_HREF } from '@angular/common';
     AppComponent,
     ProductModelEditComponent,
     ProductModelList2Component,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ProductModelFeaturesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { APP_BASE_HREF } from '@angular/common';
     FlexLayoutModule
   ],
   // providers: [ ProductModelService, {provide: APP_BASE_HREF, useValue: '/' + (window.location.pathname.split('/')[1] || '')} ],
-  providers: [ ProductModelService ],
+  providers: [ ProductModelService, ProductFeatureService ],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

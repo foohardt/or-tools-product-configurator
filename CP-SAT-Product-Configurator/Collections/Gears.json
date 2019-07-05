@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5d0c83936d91b11f0c92bb9a"},"name":"Manual","type":"manual"}
+{"_id":{"$oid":"5d0c839d6d91b11f0c92bb9b"},"name":"Automatic","type":"automatic"}

@@ -1,0 +1,16 @@
+{"_id":{"$oid":"5d161d8a3af99c28549afa84"},"name":"Toilet Roll Holder","category":"compact"}
+{"_id":{"$oid":"5d161da23af99c28549afa85"},"name":"Child Seat","category":"compact"}
+{"_id":{"$oid":"5d161db43af99c28549afa86"},"name":"Wobble Dachshund","category":"compact"}
+{"_id":{"$oid":"5d161dc13af99c28549afa87"},"name":"Seat Heating","category":"compact"}
+{"_id":{"$oid":"5d161dd03af99c28549afa88"},"name":"Keyless Go","category":"sedan"}
+{"_id":{"$oid":"5d161ddb3af99c28549afa89"},"name":"Leather Seats","category":"sedan"}
+{"_id":{"$oid":"5d161e3a3af99c28549afa8c"},"name":"Electric Windows","category":"sedan"}
+{"_id":{"$oid":"5d161e553af99c28549afa8d"},"name":"Skylight","category":"sedan"}
+{"_id":{"$oid":"5d161e653af99c28549afa8e"},"name":"Champanger Bar","category":"suv"}
+{"_id":{"$oid":"5d161e7d3af99c28549afa8f"},"name":"Engine Snorkel","category":"suv"}
+{"_id":{"$oid":"5d161e953af99c28549afa90"},"name":"Ashtray","category":"suv"}
+{"_id":{"$oid":"5d161ea03af99c28549afa91"},"name":"Extra Tank","category":"suv"}
+{"_id":{"$oid":"5d161eb63af99c28549afa92"},"name":"Sport Steering Wheel","category":"sport"}
+{"_id":{"$oid":"5d161ec83af99c28549afa93"},"name":"Nitro Injection","category":"sport"}
+{"_id":{"$oid":"5d161ed73af99c28549afa94"},"name":"Ejector Seat","category":"sport"}
+{"_id":{"$oid":"5d161ee53af99c28549afa95"},"name":"Spoiler","category":"sport"}

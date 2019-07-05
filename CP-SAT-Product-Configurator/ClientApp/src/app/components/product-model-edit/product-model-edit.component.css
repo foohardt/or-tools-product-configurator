@@ -1,3 +1,9 @@
+.button-right {
+  position: absolute;
+  right: 10%;
+  }
+
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -34,3 +40,4 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
+

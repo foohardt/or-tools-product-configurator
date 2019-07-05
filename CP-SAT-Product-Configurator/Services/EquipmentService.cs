@@ -16,7 +16,7 @@ namespace CP_SAT_Product_Configurator.Services
             var database = client.GetDatabase("ConfiguratorDb");
             _equipment = database.GetCollection<Equipment>("Equipment");
         }
-        
+
         public List<Equipment> Get()
         {
             return _equipment.Find(equipment => true).ToList();

@@ -23,7 +23,7 @@ namespace CP_SAT_Product_Configurator.Controllers
         [HttpGet]
         public ActionResult<Product> Get([FromQuery]EngineType engine, Category category)
         {
-                 return _productConfigurator.ConfigureProduct(engine, category);
+            return _productConfigurator.ConfigureProduct(engine, category);
         }
 
     }
