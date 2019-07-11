@@ -14,5 +14,5 @@ Frontend:
 </ul>
 Backend:
 <ul>
-<li>ASP.NET core, MongoDB, Google OR-Tools</li>
+<li>ASP.NET Core, MongoDB, Google OR-Tools</li>
 </ul>
