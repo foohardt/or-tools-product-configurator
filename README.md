@@ -16,7 +16,7 @@ Backend:
 <li>ASP.NET Core, MongoDB, Google OR-Tools</li>
 </ul>
 
-<h2>Approach<h2>
+<h2>Approach</h2>
 
 Product configuration on a high level basically is a constraint satisfaction problem (CSP). The internal or external customer whishes to configure a product based on his preferences or based on the constraints given to him. No matter what in most cases it's clear that not all customer whishes can be fullfilled since not all possible combinations of product items can be produced.
 
