@@ -20,7 +20,7 @@ Backend:
 
 Product configuration on a high level basically is a constraint satisfaction problem (CSP). The internal or external customer whishes to configure a product based on his preferences or based on the constraints given to him. No matter what in most cases it's clear that not all customer whishes can be fullfilled since not all possible combinations of product items can be produced.
 
-<h3>What is a CSP<h3>
+<h3>What is a CSP</h3>
 Formally speaking a CSP is a tripel of decision variables (X), domains (D) and constraints (C). This way we can formalize a CSP as followed CSP<X,D,C>. The following table shows a very simple CSP of combining enginetypes with gears.
   
 <table>
@@ -51,7 +51,6 @@ Whereas gas and electro are decision variables (X1, X2), manual and automatic ar
 <li>C1 = X2 != D1</li>
   <li>C2 = X1 || X2</li>
 </ol>
-<li></li>
 
 C2 just says that a car can only have one engine. Either gas or eletric. 
 
